@@ -1,7 +1,29 @@
+using Domain.Layer.Context;
+using Microsoft.EntityFrameworkCore;
+using Navid_Personal_Website.ContainerDI;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+
+
+#region Dependency Injections Container
+
+builder.Services.RegisterService();
+
+#endregion
+
+
+#region Config Database
+
+var connectionString = builder.Configuration.GetConnectionString("NavidPersonalWebsite");
+
+builder.Services.AddDbContext<DatabaseContext>(option =>
+    option.UseSqlServer(connectionString), ServiceLifetime.Transient);
+
+#endregion
 
 var app = builder.Build();
 
@@ -16,6 +38,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapStaticAssets();

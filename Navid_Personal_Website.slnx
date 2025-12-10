@@ -1,3 +1,11 @@
 <Solution>
-  <Project Path="Navid_Personal_Website/Navid_Personal_Website.csproj" />
+  <Folder Name="/01-Domin.Layer/">
+    <Project Path="Domain.Layer/Domain.Layer.csproj" />
+  </Folder>
+  <Folder Name="/02-Application.Layer/">
+    <Project Path="Application.Layer/Application.Layer.csproj" />
+  </Folder>
+  <Folder Name="/03-ServiceHost/">
+    <Project Path="Navid_Personal_Website/Navid_Personal_Website.csproj" />
+  </Folder>
 </Solution>
