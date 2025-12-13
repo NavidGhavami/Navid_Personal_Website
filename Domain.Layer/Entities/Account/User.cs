@@ -15,7 +15,6 @@ namespace Domain.Layer.Entities.Account
         [DataType(DataType.EmailAddress)]
         public string? Email { get; set; }
 
-
         [Display(Name = "تلفن همراه")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد")]
@@ -30,6 +29,9 @@ namespace Domain.Layer.Entities.Account
         [Display(Name = "بلاک شده / نشده")]
         public bool IsBlocked { get; set; }
 
+        [Display(Name = "کد فعالسازی")]
+        public int? ActivationCode { get; set; }
+
 
         #endregion
 
@@ -38,7 +40,5 @@ namespace Domain.Layer.Entities.Account
         public Role Role { get; set; }
 
         #endregion
-
-       
     }
 }

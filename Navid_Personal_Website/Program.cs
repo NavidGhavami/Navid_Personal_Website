@@ -1,11 +1,17 @@
 using Domain.Layer.Context;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Navid_Personal_Website.ContainerDI;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+
+var mvcBuilder = builder.Services.AddControllersWithViews();
+
+#if DEBUG
+mvcBuilder.AddRazorRuntimeCompilation();
+#endif
 
 
 
