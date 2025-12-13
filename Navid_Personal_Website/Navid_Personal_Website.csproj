@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Application.Layer\Application.Layer.csproj" />
     <ProjectReference Include="..\Domain.Layer\Domain.Layer.csproj" />
   </ItemGroup>
 

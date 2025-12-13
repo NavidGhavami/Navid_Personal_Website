@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Entities\MyInformation\" />
-    <Folder Include="Dtos\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration.UserSecrets;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
+using Application.Layer.Services.Implementation;
+using Application.Layer.Services.Interface;
+using Application.Layer.Utilities;
 
 namespace Navid_Personal_Website.ContainerDI
 {
@@ -18,7 +21,8 @@ namespace Navid_Personal_Website.ContainerDI
 
             #region General Services
 
-
+            services.AddTransient<IUserServices, UserServices>();
+            
 
             #endregion
 
@@ -26,6 +30,8 @@ namespace Navid_Personal_Website.ContainerDI
 
             #region Common Services
 
+            services.AddTransient<IPasswordHasher, PasswordHasher>();
+            services.AddTransient<IAuthHelper, AuthHelper>();
             services.AddHttpContextAccessor();
             services.AddSingleton<HtmlEncoder>(
                 HtmlEncoder.Create(allowedRanges: new[] { UnicodeRanges.BasicLatin, UnicodeRanges.Arabic }));
