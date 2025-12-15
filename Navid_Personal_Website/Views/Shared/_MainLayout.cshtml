@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="fa" dir="rtl">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+
+    <!-- Site Title -->
+    <title>وب سایت شخصی نوید قوامی | @ViewData["Title"]</title>
+
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="apple-touch-icon" href="~/MainTemplate/assets/img/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="~/MainTemplate/assets/img/favicon.png">
+
+    <!-- CSS here -->
+    <partial name="_HeaderReferences" />
+    @await RenderSectionAsync("styles", false)
+</head>
+
+<body>
+    <!-- Preloader Area Start -->
+    <div class="preloader">
+        <svg viewbox="0 0 1000 1000" preserveaspectratio="none">
+            <path id="preloaderSvg" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
+        </svg>
+
+        <div class="preloader-heading">
+            <div class="load-text">
+                <span>به وب سایت شخصی نوید قوامی خوش آمدید</span>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Area End -->
+    <!-- start: Back To Top -->
+    <div class="progress-wrap" id="scrollUp">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewbox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+        </svg>
+    </div>
+    <!-- end: Back To Top -->
+    <!-- HEADER START -->
+    <header class="tj-header-area header-absolute">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 d-flex flex-wrap align-items-center">
+                    <div class="logo-box">
+                        <a href="index-3.html">
+                            <img src="~/MainTemplate/assets/img/logo/logo.png" alt="">
+                        </a>
+                    </div>
+
+                    <div class="header-info-list d-none d-md-inline-block">
+                        <ul class="ul-reset">
+                            <li><a href="mailto:navid_ghavami@outlook.com">navid_ghavami@outlook.com</a></li>
+                        </ul>
+                    </div>
+                    <div class="header-menu">
+                        <nav>
+                            <ul>
+                                <li><a href="#resume-section">رزومه من</a></li>
+                                <li><a href="#skills-section">مهارت های من</a></li>
+                                <li><a href="#works-section">نمونه کارهای من</a></li>
+                                <li><a href="#services-section">خدمات های من</a></li>
+                                <li><a href="#contact-section">تماس با من</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="header-button">
+                        <a href="#" class="btn tj-btn-primary">تماس با من</a>
+                    </div>
+                    <div class="menu-bar d-lg-none">
+                        <button>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <header class="tj-header-area header-2 header-sticky sticky-out">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 d-flex flex-wrap align-items-center">
+                    <div class="logo-box">
+                        <a href="index-3.html">
+                            <img src="~/MainTemplate/assets/img/logo/logo.png" alt="">
+                        </a>
+                    </div>
+
+                    <div class="header-info-list d-none d-md-inline-block">
+                        <ul class="ul-reset">
+                            <li><a href="mailto:mail@gerolddesign.com">Gerold@gmail.com</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="header-menu">
+                        <nav>
+                            <ul>
+                                <li><a href="#resume-section">رزومه من</a></li>
+                                <li><a href="#skills-section">مهارت های من</a></li>
+                                <li><a href="#works-section">نمونه کارهای من</a></li>
+                                <li><a href="#services-section">خدمات های من</a></li>
+                                <li><a href="#contact-section">تماس با من</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <div class="header-button">
+                        <a href="#" class="btn tj-btn-primary">تماس با من</a>
+                    </div>
+
+                    <div class="menu-bar d-lg-none">
+                        <button>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- HEADER END -->
+    @RenderBody()
+
+    <!-- FOOTER AREA START -->
+    <footer class="tj-footer-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="footer-logo-box">
+                        <a href="#"><img src="~/MainTemplate/assets/img/logo/logo.png" alt=""></a>
+                    </div>
+                    <div class="footer-menu">
+                        <nav>
+                            <ul>
+                                <li><a href="#resume-section">رزومه من</a></li>
+                                <li><a href="#skills-section">مهارت های من</a></li>
+                                <li><a href="#works-section">نمونه کارهای من</a></li>
+                                <li><a href="#services-section">خدمات های من</a></li>
+                                <li><a href="#contact-section">تماس با من</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="copy-text">
+                        <p>&copy; تمامی حقوق این سایت  <a href="#" target="_blank">محفوظ میباشد</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- FOOTER AREA END -->
+    <!-- JS here -->
+    <partial name="_FooterReferences" />
+    @await RenderSectionAsync("scripts", false)
+</body>
+</html>
