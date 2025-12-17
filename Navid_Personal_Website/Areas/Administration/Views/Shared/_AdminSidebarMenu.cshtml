@@ -1,0 +1,58 @@
+﻿@using Application.Layer.Utilities
+@inject IAuthHelper _authHelper
+
+
+
+    <ul class="sidebar-menu do-nicescrol">
+
+        <li class="sidebar-header">منوی اصلی</li>
+        <li>
+            <a asp-area="Administration" asp-controller="Home" asp-action="Index" class="waves-effect">
+                <i class="zmdi zmdi-view-dashboard"></i> <span>داشبورد</span>
+            </a>
+        </li>
+        <li>
+            <a href="javaScript:void();" class="waves-effect">
+                <i class="zmdi zmdi-accounts"></i>
+                <span>مدیریت کاربران</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="sidebar-submenu">
+                <li>
+                    <a asp-area="Administration" asp-controller="Home" asp-action="UserList">
+                        <i class="zmdi zmdi-long-arrow-right"></i>لیست کاربران
+                    </a>
+                </li>
+                <li>
+                    <a asp-area="Administration" asp-controller="Home" asp-action="RoleList">
+                        <i class="zmdi zmdi-long-arrow-right"></i>مدیریت نقش ها
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javaScript:void();" class="waves-effect">
+                <i class="zmdi zmdi-copy"></i>
+                <span>مدیریت مقالات</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="sidebar-submenu">
+                <li>
+                    <a asp-area="Administration" asp-controller="Blog" asp-action="ArticleCategoryList">
+                        <i class="zmdi zmdi-long-arrow-right"></i>لیست دسته بندی مقالات
+                    </a>
+                    <a asp-area="Administration" asp-controller="Blog" asp-action="ArticleList">
+                        <i class="zmdi zmdi-long-arrow-right"></i>لیست مقالات
+                    </a>
+
+                </li>
+            </ul>
+        </li>
+
+        <li class="sidebar-header">برچسب ها</li>
+        <li><a href="javaScript:void();" class="waves-effect"><i class="zmdi zmdi-coffee text-danger"></i> <span>مهم</span></a></li>
+        <li><a href="javaScript:void();" class="waves-effect"><i class="zmdi zmdi-chart-donut text-success"></i> <span>هشدار</span></a></li>
+        <li><a href="javaScript:void();" class="waves-effect"><i class="zmdi zmdi-share text-info"></i> <span>اطلاعات</span></a></li>
+    </ul>
+
+
+
+

@@ -1,25 +1,13 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Navid_Personal_Website.Models;
 
 namespace Navid_Personal_Website.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : SiteBaseController
     {
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }
