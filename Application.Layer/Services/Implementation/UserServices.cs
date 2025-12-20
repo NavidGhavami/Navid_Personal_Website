@@ -78,7 +78,10 @@ namespace Application.Layer.Services.Implementation
                 .SingleOrDefaultAsync(x => x.Id == userId);
 
         }
-        
+        public async Task<User> GetUserByMobile(string mobile)
+        {
+            return await _userRepository.GetQuery().AsQueryable().SingleOrDefaultAsync(x => x.Mobile == mobile);
+        }
         public async Task<string> GetUserMobileById(long userId)
         {
             var user = await _userRepository.GetQuery().AsQueryable().SingleOrDefaultAsync(x => x.Id == userId);
@@ -146,7 +149,7 @@ namespace Application.Layer.Services.Implementation
                 IsBlocked = user.IsBlocked,
             };
         }
-        public async Task<EditUserResult> EditUser(EditUserDto edit, string username)
+        public async Task<EditUserResult> EditUser(EditUserDto edit)
         {
             var mainUser = await _userRepository
                 .GetQuery()
@@ -167,7 +170,7 @@ namespace Application.Layer.Services.Implementation
             mainUser.ActivationCode = edit.ActivationCode;
             
 
-            _userRepository.EditEntityByUser(mainUser, username);
+            _userRepository.EditEntity(mainUser);
             await _userRepository.SaveChanges();
 
             return EditUserResult.Success;
@@ -229,7 +232,7 @@ namespace Application.Layer.Services.Implementation
                 RoleName = role.RoleName
             };
         }
-        public async Task<EditRoleResult> EditRole(EditRoleDto edit, string username)
+        public async Task<EditRoleResult> EditRole(EditRoleDto edit)
         {
             var mainRole = await _roleRepository
                 .GetQuery()
@@ -244,7 +247,7 @@ namespace Application.Layer.Services.Implementation
             mainRole.Id = edit.Id;
             mainRole.RoleName = edit.RoleName;
 
-            _roleRepository.EditEntityByUser(mainRole, username);
+            _roleRepository.EditEntity(mainRole);
             await _roleRepository.SaveChanges();
 
             return EditRoleResult.Success;
@@ -264,7 +267,6 @@ namespace Application.Layer.Services.Implementation
         }
 
         #endregion
-
 
 
         #region Dispose

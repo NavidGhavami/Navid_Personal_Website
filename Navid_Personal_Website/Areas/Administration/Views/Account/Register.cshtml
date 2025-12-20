@@ -1,0 +1,75 @@
+﻿@model Domain.Layer.Dtos.Account.RegisterUserDto
+@{
+    ViewData["Title"] = " ثبت نام کاربر";
+}
+
+
+<div id="wrapper">
+
+	<div class="loader-wrapper" style="display: none;"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
+
+	<div class="card card-authentication1 mx-auto my-4">
+		<div class="card-body">
+			<div class="card-content p-2">
+				<div class="text-center">
+					<img src="~/Admin/assets/images/logo-icon.png" alt="logo icon">
+				</div>
+				<div class="card-title text-uppercase text-center py-3">ثبت نام کاربر</div>
+                <form asp-area="Administration" asp-controller="Account" asp-action="Register" method="post">
+                    <div class="form-group">
+                        <label class="sr-only">تلفن همراه</label>
+                        <div class="position-relative has-icon-right">
+                            <input type="text" asp-for="Mobile" class="form-control mb-2 input-shadow" placeholder="تلفن همراه را وارد کنید">
+                            <span asp-validation-for="Mobile" class="text-warning "></span>
+                            <div class="form-control-position">
+                                <i class="icon-user"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only">ایمیل</label>
+                        <div class="position-relative has-icon-right">
+                            <input type="text" asp-for="Email" class="form-control mb-2 input-shadow" placeholder="ایمیل را وارد کنید">
+                            <span asp-validation-for="Email" class="text-warning "></span>
+                            <div class="form-control-position">
+                                <i class="icon-user"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only">رمز عبور</label>
+                        <div class="position-relative has-icon-right">
+                            <input type="password" asp-for="Password" class="form-control mb-2 input-shadow" placeholder="رمز عبور را وارد کنید">
+                            <span asp-validation-for="Password" class="text-warning"></span>
+                            <div class="form-control-position">
+                                <i class="icon-lock"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only">تکرار رمز عبور</label>
+                        <div class="position-relative has-icon-right">
+                            <input type="password" asp-for="ConfirmPassword" class="form-control mb-2 input-shadow" placeholder=" تکرار رمز عبور را وارد کنید">
+                            <span asp-validation-for="ConfirmPassword" class="text-warning"></span>
+                            <div class="form-control-position">
+                                <i class="icon-lock"></i>
+                            </div>
+                        </div>
+                    </div>
+
+					<div class="form-group">
+						<div class="icheck-material-white">
+							<input type="checkbox" id="user-checkbox" checked="">
+							<label for="user-checkbox">من با شرایط و ضوابط موافقم</label>
+						</div>
+					</div>
+
+					<button type="submit" class="btn btn-light btn-block waves-effect waves-light">ثبت نام</button>
+				</form>
+			</div>
+		</div>
+		<div class="card-footer text-center py-3">
+            <p class="text-warning mb-0">در حال حاضر یک حساب کاربری دارید؟ <a asp-area="Administration" asp-controller="Account" asp-action="Login"> اینجا وارد شوید</a></p>
+		</div>
+	</div>
+</div>

@@ -1,4 +1,6 @@
+using Application.Layer.Utilities;
 using Domain.Layer.Context;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Navid_Personal_Website.ContainerDI;
@@ -28,6 +30,36 @@ var connectionString = builder.Configuration.GetConnectionString("NavidPersonalW
 
 builder.Services.AddDbContext<DatabaseContext>(option =>
     option.UseSqlServer(connectionString), ServiceLifetime.Transient);
+
+#endregion
+
+#region Authentication
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+
+}).AddCookie(options =>
+{
+    options.LoginPath = "/administration/Login";
+    options.LogoutPath = "/administration/Logout";
+    options.AccessDeniedPath = "/404-page-not-found";
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(43200);
+});
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminArea",
+        builders => builders.RequireRole(new List<string>
+        {
+            Roles.Administrator, Roles.AdminAssistant, Roles.ContentUploader
+        }));
+    options.AddPolicy("UserManagement",
+        builders => builders.RequireRole(new List<string> { Roles.Administrator }));
+
+});
+
 
 #endregion
 
