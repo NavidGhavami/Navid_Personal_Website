@@ -1,4 +1,5 @@
 ﻿using Domain.Layer.Entities.Account;
+using Domain.Layer.Entities.MyInformation;
 using Microsoft.EntityFrameworkCore;
 
 namespace Domain.Layer.Context
@@ -13,6 +14,12 @@ namespace Domain.Layer.Context
 
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
+
+        #endregion
+
+        #region My Information
+
+        public DbSet<MyInformation> MyInformations { get; set; }
 
         #endregion
 

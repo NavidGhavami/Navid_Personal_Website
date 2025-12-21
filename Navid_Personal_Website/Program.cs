@@ -24,6 +24,7 @@ builder.Services.RegisterService();
 #endregion
 
 
+
 #region Config Database
 
 var connectionString = builder.Configuration.GetConnectionString("NavidPersonalWebsite");
