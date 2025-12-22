@@ -141,6 +141,47 @@ namespace Application.Layer.Utilities
             DateTime currentDate = new DateTime(year, month, day, new PersianCalendar());
             return currentDate;
         }
+
+        public static string ToPersianFullDate(this DateTime date)
+        {
+            var pc = new PersianCalendar();
+
+            int day = pc.GetDayOfMonth(date);
+            int month = pc.GetMonth(date);
+            int year = pc.GetYear(date);
+            DayOfWeek dayOfWeek = pc.GetDayOfWeek(date);
+
+            string persianDayName = dayOfWeek switch
+            {
+                DayOfWeek.Saturday => "شنبه",
+                DayOfWeek.Sunday => "یکشنبه",
+                DayOfWeek.Monday => "دوشنبه",
+                DayOfWeek.Tuesday => "سه‌شنبه",
+                DayOfWeek.Wednesday => "چهارشنبه",
+                DayOfWeek.Thursday => "پنجشنبه",
+                DayOfWeek.Friday => "جمعه",
+                _ => ""
+            };
+
+            string persianMonthName = month switch
+            {
+                1 => "فروردین",
+                2 => "اردیبهشت",
+                3 => "خرداد",
+                4 => "تیر",
+                5 => "مرداد",
+                6 => "شهریور",
+                7 => "مهر",
+                8 => "آبان",
+                9 => "آذر",
+                10 => "دی",
+                11 => "بهمن",
+                12 => "اسفند",
+                _ => ""
+            };
+
+            return $"{persianDayName} {day} {persianMonthName} {year}";
+        }
     }
 
 }

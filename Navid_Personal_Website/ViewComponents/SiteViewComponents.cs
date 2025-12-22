@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Application.Layer.Services.Interface;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Navid_Personal_Website.ViewComponents
 {
@@ -6,9 +7,17 @@ namespace Navid_Personal_Website.ViewComponents
 
     public class MyInformationViewComponent : ViewComponent
     {
+        private readonly IWebsiteServices _websiteServices;
+
+        public MyInformationViewComponent(IWebsiteServices websiteServices)
+        {
+            _websiteServices = websiteServices;
+        }
+
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View("MyInformation");
+            var myInformation = await _websiteServices.GetAllMyInformation();
+            return View("MyInformation",myInformation);
         }
     }
 

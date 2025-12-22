@@ -131,13 +131,12 @@ namespace Application.Layer.Services.Implementation
         public async Task<EditUserDto> GetUserForEdit(long userId)
         {
             var user = await _userRepository.GetQuery()
-                .AsQueryable()
                 .Include(x => x.Role)
                 .SingleOrDefaultAsync(x => x.Id == userId);
 
             if (user == null)
             {
-                return null;
+                return new EditUserDto();
             }
 
             return new EditUserDto

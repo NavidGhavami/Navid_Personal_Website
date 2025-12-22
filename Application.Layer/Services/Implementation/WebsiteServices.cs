@@ -32,26 +32,13 @@ public class WebsiteServices : IWebsiteServices
 
     #region My Information
 
-    public async Task<List<MyInformationList>> GetAllMyInformation()
+    public async Task<MyInformationList> GetAllMyInformation()
     {
-
         return await _myInformationRepository
             .GetQuery()
             .ProjectTo<MyInformationList>(_mapper.ConfigurationProvider)
-            .ToListAsync();
+            .FirstOrDefaultAsync() ?? new MyInformationList();
 
-        //return await _myInformationRepository.GetQuery()
-        //    .AsQueryable()
-        //    .Where(x => !x.IsDelete)
-        //    .Select(x => new MyInformationList
-        //    {
-        //        Id = x.Id,
-        //        HeaderTitle = x.HeaderTitle,
-        //        MainTitle = x.MainTitle,
-        //        ProfileImage = x.ProfileImage,
-        //        CreateDateTime = x.CreateDate.ToStringShamsiDate()
-
-        //    }).ToListAsync();
     }
 
     public async Task<CreateMyInformationResult> CreateMyInformation(CreateMyInformationDto myInfo, IFormFile profileImage)
@@ -65,36 +52,59 @@ public class WebsiteServices : IWebsiteServices
         profileImage.AddImageToServer(imageName, PathExtension.UserProfileOriginServer,
             100, 100, PathExtension.UserProfileThumbServer);
 
-        var newInfo = new MyInformation
-        {
-            HeaderTitle = myInfo.HeaderTitle,
-            MainTitle = myInfo.MainTitle,
-            ProfileImage = imageName,
-            CompletedProject = myInfo.CompletedProject,
-            CooperatingCompany = myInfo.CooperatingCompany,
-            Description = myInfo.Description,
-            License = myInfo.License,
-            WorkExperience = myInfo.WorkExperience,
+        var newInfo = _mapper.Map<MyInformation>(myInfo);
 
-        };
+        newInfo.ProfileImage = imageName;
 
         await _myInformationRepository.AddEntity(newInfo);
         await _myInformationRepository.SaveChanges();
 
         return CreateMyInformationResult.Success;
-
-
     }
 
-    public Task<EditMyInformationDto> GetMyInformationForEdit(long myInfoId)
+    public async Task<EditMyInformationDto> GetMyInformationForEdit(long myInfoId)
     {
-        throw new NotImplementedException();
+        return await _myInformationRepository
+            .GetQuery()
+            .ProjectTo<EditMyInformationDto>(_mapper.ConfigurationProvider)
+            .FirstOrDefaultAsync(x => x.Id == myInfoId)
+            ?? new EditMyInformationDto();
     }
 
-    public Task<EditMyInformationResult> EditMyInformation(EditMyInformationDto myInfo, IFormFile profileImage)
+    public async Task<EditMyInformationResult> EditMyInformation(EditMyInformationDto myInfo, IFormFile profileImage)
     {
-        throw new NotImplementedException();
+        var mainInfo = await _myInformationRepository
+            .GetQuery()
+            .SingleOrDefaultAsync(x => x.Id == myInfo.Id);
+
+        if (mainInfo == null)
+        {
+            return EditMyInformationResult.NotFound;
+        }
+
+        _mapper.Map(myInfo, mainInfo);
+
+        if (profileImage != null && profileImage.IsImage())
+        {
+            var imageName = Guid.NewGuid().ToString("N") +
+                            Path.GetExtension(profileImage.FileName);
+
+            profileImage.AddImageToServer(
+                imageName,
+                PathExtension.UserProfileOriginServer,
+                100,
+                100,
+                PathExtension.UserProfileThumbServer);
+
+            mainInfo.ProfileImage = imageName;
+        }
+
+        _myInformationRepository.EditEntity(mainInfo);
+        await _myInformationRepository.SaveChanges();
+
+        return EditMyInformationResult.Success;
     }
+
 
     #endregion
 

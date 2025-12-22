@@ -1,0 +1,86 @@
+﻿@model Domain.Layer.Dtos.MyInformation.CreateMyInformationDto
+
+
+@{
+    ViewData["Title"] = "ایجاد اطلاعات جدید";
+}
+
+
+
+@section scripts
+{
+    <partial name="_AdminJqueryValidators" />
+
+}
+
+<div class="row pt-2 pb-2">
+    <div class="col-sm-9">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-area="Administration" asp-controller="Home" asp-action="Index">داشبورد</a></li>
+            <li class="breadcrumb-item"><a href="javaScript:void();">مدیریت اطلاعات من</a></li>
+            <li class="breadcrumb-item"><a href="javaScript:void();">@ViewData["Title"]</a></li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header"><i class="fa fa-plus"></i> @ViewData["Title"]</div>
+            <div class="card-body">
+
+                <form asp-area="Administration" asp-controller="Website" asp-action="CreateMyInformation" method="post" enctype="multipart/form-data" id="filter-form">
+                    <div class="row">
+                        <div class="form-group col-lg-6">
+                            <label>عنوان هدر</label>
+                            <input class="form-control" asp-for="HeaderTitle" />
+                            <span class="text-danger float-right" asp-validation-for="HeaderTitle"></span>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>عنوان اصلی</label>
+                            <input class="form-control" asp-for="MainTitle" />
+                            <span class="text-danger float-right" asp-validation-for="MainTitle"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-lg-12">
+                            <label>توضیحات</label>
+                            <input class="form-control" asp-for="Description" rows="10" />
+                            <span class="text-danger float-right" asp-validation-for="Description"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-lg-3">
+                            <label>تعداد گواهی و دوره</label>
+                            <input class="form-control" asp-for="License" />
+                            <span class="text-danger float-right" asp-validation-for="License"></span>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>تعداد پروژه تکمیلی</label>
+                            <input class="form-control" asp-for="CompletedProject" />
+                            <span class="text-danger float-right" asp-validation-for="CompletedProject"></span>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>همکاری با شرکت</label>
+                            <input class="form-control" asp-for="CooperatingCompany" />
+                            <span class="text-danger float-right" asp-validation-for="CooperatingCompany"></span>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>تجربه کاری</label>
+                            <input class="form-control" asp-for="WorkExperience" />
+                            <span class="text-danger float-right" asp-validation-for="WorkExperience"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-lg-12">
+                            <label>آپلود تصویر</label>
+                            <input type="file" name="profileImage" class="form-control" accept=".png, .jpeg, .jpg" />
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block">ایجاد اطلاعات من</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

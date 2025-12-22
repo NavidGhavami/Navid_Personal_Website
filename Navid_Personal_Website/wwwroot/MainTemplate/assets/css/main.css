@@ -345,6 +345,8 @@ a h6:hover {
 }
 .lead {
 	font-size: 20px;
+	text-align : justify;
+	line-height : 1.5;
 }
 .social-icons {
 	display: -webkit-box;
@@ -880,7 +882,7 @@ body.loaded {
 	margin-right: 55px;
 }
 .tj-header-area .menu-bar {
-	margin-right: 25px;
+	margin-right: 275px;
 }
 .tj-header-area .menu-bar button {
 	border: none;

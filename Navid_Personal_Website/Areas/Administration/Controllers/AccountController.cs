@@ -268,8 +268,6 @@ namespace Navid_Personal_Website.Areas.Administration.Controllers
 
         #endregion
 
-     
-
         #region LogOut
 
 
